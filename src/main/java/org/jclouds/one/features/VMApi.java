@@ -103,7 +103,7 @@ public interface VMApi {
 "        </params>\n" +
 "      </methodCall>")
     String action(@PayloadParam("auth") String auth,
-            @PayloadParam("action") int action,
+            @PayloadParam("action") String action,
             @PayloadParam("id") int id); 
 
     

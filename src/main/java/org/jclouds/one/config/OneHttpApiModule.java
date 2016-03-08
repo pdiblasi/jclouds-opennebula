@@ -45,6 +45,6 @@ public class OneHttpApiModule extends BaseEC2HttpApiModule<OneApi> {
     @Override
     protected void configure() {
        bind(EC2Api.class).to(OneApi.class);
-       super.configure();   
+       super.configure();
     }
 }
