@@ -23,6 +23,8 @@ import javax.ws.rs.POST;
 
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
+import org.jclouds.one.binders.BindOneBaseRequest;
+import org.jclouds.rest.annotations.MapBinder;
 
 import org.jclouds.rest.annotations.Payload;
 import org.jclouds.rest.annotations.PayloadParam;
@@ -600,18 +602,7 @@ public interface VMApi {
     @Named("info")
     @POST
     @Produces(MediaType.TEXT_XML)
-    @Payload(value = "<?xml version=\"1.0\" encoding=\"UTF-8\" ?>\n" +
-"      <methodCall>\n" +
-"        <methodName>one.vm.info</methodName>\n" +
-"        <params>\n" +
-"          <param>\n" +
-"            <value><string>{auth}</string></value>\n" +
-"          </param>\n" +
-"          <param>\n" +
-"            <value><int>{id}</int></value>\n" +
-"          </param>\n" +                    
-"        </params>\n" +
-"      </methodCall>")
+    @MapBinder(BindOneBaseRequest.class)
     String info(@PayloadParam("auth") String auth,
             @PayloadParam("id") int id);
 
